@@ -27,21 +27,9 @@ p {
 	padding-left: 100%;
 }
 
-/* Login */
-.text-center {
-	height: 100%;
-	align-items: center;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: rgb(216, 214, 214);
-}
+/* Body */
 
-.form-login {
-	max-width: 330px;
-	padding: 15px;
-
-}
-
-.form-floating {
-	padding-bottom: 5%;
+.botoes {
+	padding-top: 1%;
+	padding-bottom: 1%;
 }
