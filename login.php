@@ -1,68 +1,12 @@
 <?php
 session_start();
-if (isset($_SESSION["user"]) && !empty($_SESSION["user"])) {
+if (isset($_SESSION["usuario"]) && !empty($_SESSION["usuario"])) {
 	header("Location: inicio.php");
 }
 
 require "header.php";
 ?>
-<style>
-	body {
-		align-items: center;
-		background-image: url('img/background.gif');
-		backdrop-filter: blur(10px);
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
-		height: 100vh;
-		padding-top: 5%;
-		position: relative;
-	}
-
-	body::before {
-		content: "";
-		position: absolute;
-		top: 0px;
-		right: 0px;
-		bottom: 0px;
-		left: 0px;
-		background-color: rgba(100, 100, 100, 0.3);
-	}
-
-	.row {
-		position: relative;
-		margin-left: auto;
-		margin-right: auto;
-		background-color: white;
-		border-radius: 15px;
-		height: 75%;
-	}
-
-	.div-img {
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-image: url('img/background.gif');
-		padding-top: 10%;
-		border-radius: 15px 0px 0px 15px;
-	}
-
-	.form-floating {
-		padding-bottom: 5%;
-	}
-
-	form {
-		padding: 5%;
-	}
-
-	.txt {
-		color: white;
-		text-shadow: 2px 2px 5px black;
-		font-weight: bold;
-		align-items: center;
-
-	}
-</style>
+<link rel="stylesheet" href="css_login.css">
 
 <body class="text-center bg-img">
 
@@ -81,13 +25,23 @@ require "header.php";
 						<img class="mb-4" src="img/user.png" alt="" width="100" height="100">
 
 						<div class="form-floating">
-							<input type="name" class="form-control" id="floatingInput">
+							<input type="name" class="form-control" id="usuario" name="usuario" placeholder="Nome de usuario" required autofocus>
 							<label for="floatingInput">Usuario</label>
 						</div>
 						<div class="form-floating">
-							<input type="password" class="form-control" id="floatingPassword">
+							<input type="password" class="form-control" id="senha" name="senha" required>
 							<label for="floatingPassword">senha</label>
 						</div>
+
+						<?php
+						$usuario = filter_input(INPUT_POST, "usuario", FILTER_SANITIZE_SPECIAL_CHARS);
+
+						if ($usuario != "123") { ?>
+
+							<div class="alert alert-danger" role="alert">
+								O usuário ou a senha estão incorretos.
+							</div>
+						<?php } ?>
 
 						<button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
 						<p class="mt-5 mb-3 text-body-secondary">&copy; Diteiros reservado IFSP</p>
